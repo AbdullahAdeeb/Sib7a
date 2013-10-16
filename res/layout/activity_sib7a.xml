@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sib7a_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Sib7aActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <org.andengine.opengl.view.RenderSurfaceView
+        android:id="@+id/physicsWorldFrameContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="420dp"
+        android:layout_gravity="top"
+        android:layout_margin="0dp" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bottom_background"
+        android:gravity="center_horizontal" >
+
+        <Spinner
+            android:id="@+id/sib7a_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignTop="@+id/imageButton1"
+            android:layout_marginRight="40dp"
+            android:layout_toRightOf="@+id/imageButton1"
+            android:adjustViewBounds="true"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            tools:listitem="@android:layout/simple_spinner_item" 
+            />
+
+        <TextView
+            android:id="@+id/startInstructionsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/imageButton1"
+            android:layout_centerHorizontal="true"
+            android:text="Use the volume buttons to start" />
+
+        <TextView
+            android:id="@+id/countTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="11dp"
+            android:text="0"
+            android:textColor="@color/red"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/define_size_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_above="@+id/startInstructionsText"
+            android:layout_centerHorizontal="true"
+            android:onClick="onClickDefineSize"
+            android:text="@string/cusotme_count__define_button"
+            android:visibility="invisible" />
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:adjustViewBounds="true"
+            android:onClick="onClickInfoButton"
+            android:scaleType="fitCenter"
+            android:src="@drawable/info_icon" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/define_size_button"
+            android:layout_below="@+id/countTextView"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+            android:text="بسم الله الرحمن الرحيم"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </RelativeLayout>
+
+</LinearLayout>

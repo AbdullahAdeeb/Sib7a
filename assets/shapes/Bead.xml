@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- created with http://www.physicseditor.de -->
+<bodydef version="1.0">
+    <bodies numBodies="1">
+
+        <body name="Bead1" dynamic="true" numFixtures="7">
+
+            <fixture
+                density="2"
+                friction="0.5"
+                restitution="0"
+                filter_categoryBits="1"
+                filter_groupIndex="0"
+                filter_maskBits="65535"
+                isSensor="false"
+                type="POLYGON"
+                numPolygons="1"
+                >
+
+
+                <polygon numVertexes="6">
+
+                    <vertex x="-25.0000" y="-33.0000" />
+
+                    <vertex x="1.0000" y="-42.0000" />
+
+                    <vertex x="26.0000" y="-33.0000" />
+
+                    <vertex x="26.0000" y="33.0000" />
+
+                    <vertex x="1.0000" y="40.0000" />
+
+                    <vertex x="-25.0000" y="32.0000" />
+
+                </polygon>
+
+
+            </fixture>
+
+            <fixture
+                density="2"
+                friction="0.5"
+                restitution="0"
+                filter_categoryBits="1"
+                filter_groupIndex="0"
+                filter_maskBits="65535"
+                isSensor="false"
+                type="POLYGON"
+                numPolygons="1"
+                >
+
+
+                <polygon numVertexes="3">
+
+                    <vertex x="-25.0000" y="-33.0000" />
+
+                    <vertex x="-17.0000" y="-41.0000" />
+
+                    <vertex x="1.0000" y="-42.0000" />
+
+                </polygon>
+
+
+            </fixture>
+
+            <fixture
+                density="2"
+                friction="0.5"
+                restitution="0"
+                filter_categoryBits="1"
+                filter_groupIndex="0"
+                filter_maskBits="65535"
+                isSensor="false"
+                type="POLYGON"
+                numPolygons="1"
+                >
+
+
+                <polygon numVertexes="3">
+
+                    <vertex x="1.0000" y="-42.0000" />
+
+                    <vertex x="18.0000" y="-42.0000" />
+
+                    <vertex x="26.0000" y="-33.0000" />
+
+                </polygon>
+
+
+            </fixture>
+
+            <fixture
+                density="2"
+                friction="0.5"
+                restitution="0"
+                filter_categoryBits="1"
+                filter_groupIndex="0"
+                filter_maskBits="65535"
+                isSensor="false"
+                type="POLYGON"
+                numPolygons="1"
+                >
+
+
+                <polygon numVertexes="3">
+
+                    <vertex x="23.0000" y="39.0000" />
+
+                    <vertex x="1.0000" y="40.0000" />
+
+                    <vertex x="26.0000" y="33.0000" />
+
+                </polygon>
+
+
+            </fixture>
+
+            <fixture
+                density="2"
+                friction="0.5"
+                restitution="0"
+                filter_categoryBits="1"
+                filter_groupIndex="0"
+                filter_maskBits="65535"
+                isSensor="false"
+                type="POLYGON"
+                numPolygons="1"
+                >
+
+
+                <polygon numVertexes="3">
+
+                    <vertex x="-16.0000" y="40.0000" />
+
+                    <vertex x="-25.0000" y="32.0000" />
+
+                    <vertex x="1.0000" y="40.0000" />
+
+                </polygon>
+
+
+            </fixture>
+
+            <fixture
+                density="2"
+                friction="0.5"
+                restitution="0"
+                filter_categoryBits="1"
+                filter_groupIndex="0"
+                filter_maskBits="65535"
+                isSensor="false"
+                type="POLYGON"
+                numPolygons="1"
+                >
+
+
+                <polygon numVertexes="4">
+
+                    <vertex x="-25.0000" y="-33.0000" />
+
+                    <vertex x="-25.0000" y="32.0000" />
+
+                    <vertex x="-30.0000" y="12.0000" />
+
+                    <vertex x="-30.0000" y="-13.0000" />
+
+                </polygon>
+
+
+            </fixture>
+
+            <fixture
+                density="2"
+                friction="0.5"
+                restitution="0"
+                filter_categoryBits="1"
+                filter_groupIndex="0"
+                filter_maskBits="65535"
+                isSensor="false"
+                type="POLYGON"
+                numPolygons="1"
+                >
+
+
+                <polygon numVertexes="4">
+
+                    <vertex x="26.0000" y="33.0000" />
+
+                    <vertex x="26.0000" y="-33.0000" />
+
+                    <vertex x="31.0000" y="-17.0000" />
+
+                    <vertex x="31.0000" y="20.0000" />
+
+                </polygon>
+
+
+            </fixture>
+
+        </body>
+
+    </bodies>
+    <metadata>
+        <format>1</format>
+        <ptm_ratio></ptm_ratio>
+    </metadata>
+</bodydef>

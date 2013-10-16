@@ -1,0 +1,76 @@
+{
+
+	"HTMLFileName":"splashScreenOne.html",
+	"pref__general__AutoKeyframePropertiesArmed":"false",
+	"symbol_stage":{
+		"dummyStageParentWidth":"720px",
+		"element_${_space-vixen-photoshop-tutorial-101}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"animationEnabled":"false",
+			"timelineColor":"0x50bd82"},
+		"dummyStageParentHeight":"1280px",
+		"element_${_Text}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"defaultStageParentHeight":"1280px",
+		"defaultStageParentWidth":"720px",
+		"element_${_Stage}":{
+			"timelineColor2":"0xcbbd71",
+			"invisible":"false",
+			"timelineColor":"0xeedf79",
+			"locked":"false",
+			"timelineColor3":"0x7b7652"},
+		"element_${_Text2}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096"},
+		"element_${_Untitled-1}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"invisible":"false",
+			"timelineColor":"0x00bda4"}},
+	"TransitionIdCounter":"36",
+	"CompZoomFactor":"100",
+	"StageZoomFactor":"100",
+	"pixelsPerMs":"0.2",
+	"Down-level-Default Timeline_playhead_ms":"0",
+	"symbol_Down-level":{
+		"defaultStageParentWidth":"720px",
+		"defaultStageParentHeight":"1280px",
+		"dummyStageParentWidth":"720px",
+		"dummyStageParentHeight":"1280px"},
+	"usedBOM":"false",
+	"nextElementColorIndex":"6",
+	"stage-Default Timeline_playhead_ms":"2000",
+	"pref__general__FilterNonAnimatedElements":"false",
+	"ModelData":"{\
+\"stage\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+            \"ElementKeyframes\": {\
+                \"${_Text}\": [], \
+                \"${_Stage}\": [], \
+                \"${_Untitled-1}\": [], \
+                \"${_Text2}\": [], \
+                \"body\": []\
+            }\
+      }\
+   }},\
+\"Preloader\": {\
+   \"timelines\": {\
+\
+   }},\
+\"Down-level\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+            \"ElementKeyframes\": {\
+                \"${symbolSelector}\": []\
+            }\
+      }\
+   }}\
+}",
+	"viewStartY":"0"}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sib7a</string>
+    <string name="com_name">Baramej</string>
+    <string name="title_main_menu">Main Menu</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_About">About us</string>
+    <string name="main_menu_about">Abouts</string>
+    <string name="Button_sib7aStart">Start Sib7a</string>
+    <string name="title_activity_sib7a">بسم الله الرحمن الرحيم</string>
+    <string name="title_activity_masba7a">Masba7aActivity</string>
+
+    
+    <string-array name="counts_label_array">
+        <item>Counting to 33</item>
+        <item>Counting to 100</item>
+        <item>User Defined Count</item>
+    </string-array>
+    <!-- Settings dialog -->
+    <string name="settings_dialog_title">User Preferences</string>
+    <string name="settings_dialog_customCount_summary">User defined count</string>
+    <string name="settings_dialog_customCount_title">Custom Size</string>
+    <string name="settings_dialog_count">custom count</string>
+    <string name="settings_dialog_isVibrate_title">Vibration Feedback</string>
+    <string name="settings_dialog_isVibrate_summary">Vibrate on click</string>
+    <string name="settings_dialog_isSound_title">Sound Feedback</string>
+    <string name="settings_dialog_isSound_summary">Sound on click</string>
+    <string name="settings_dialog_done">Preferences saved</string>
+
+    <!--  -->
+    <string name="dialog_ok">Ok</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="title_activity_sib7a212">Sib7a212</string>
+    <string name="title_activity_test">Test</string>
+
+    <color name="black">#ffff00</color>
+    <color name="yellow">#ffd200</color>
+    <color name="red">#ff4800</color>
+    <color name="purple">#d1b0ff</color>
+
+    <string name="cusotme_count__define_button">Define size</string>
+
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preference xmlns:android="http://schemas.android.com/apk/res/android" >
+        <EditTextPreference
+            android:defaultValue="33"
+            android:key="userDefinedCount"
+            android:summary="@string/settings_dialog_customCount_summary"
+            android:title="@string/settings_dialog_customCount_title" 
+            android:inputType="number">
+        </EditTextPreference>
+
+</Preference>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.baramej.sib7a"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo" >
+        <activity
+            android:name="com.baramej.sib7a.Sib7aMain"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.baramej.sib7a.SplashScreenActivity" />
+        <activity android:name="com.baramej.sib7a.Sib7aPhysicsWorld" />
+        <activity android:name="com.baramej.sib7a.Sib7aPhysicsWorld2" />
+        <!--
+             <activity
+            android:name="com.baramej.sib7a.Sib7aMain"
+            android:label="@string/title_activity_sib7a" />
+        -->
+        <activity
+            android:name="com.baramej.sib7a.SettingsDialog"
+            android:label="@string/settings_dialog_title"
+            android:theme="@android:style/Theme.Holo.Dialog" />
+    </application>
+
+</manifest>

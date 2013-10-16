@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- created with http://www.physicseditor.de -->
+<bodydef version="1.0">
+    <bodies numBodies="1">
+
+        <body name="holder" dynamic="true" numFixtures="1">
+
+            <fixture
+                density="2"
+                friction="0"
+                restitution="0"
+                filter_categoryBits="1"
+                filter_groupIndex="0"
+                filter_maskBits="65535"
+                isSensor="false"
+                type="POLYGON"
+                numPolygons="3"
+                >
+
+
+                <polygon numVertexes="6">
+
+                    <vertex x="245.0000" y="22.0000" />
+
+                    <vertex x="141.0000" y="43.0000" />
+
+                    <vertex x="114.0000" y="-44.0000" />
+
+                    <vertex x="232.0000" y="-26.0000" />
+
+                    <vertex x="261.0000" y="-15.0000" />
+
+                    <vertex x="271.0000" y="3.0000" />
+
+                </polygon>
+
+                <polygon numVertexes="6">
+
+                    <vertex x="-232.0000" y="-25.0000" />
+
+                    <vertex x="-182.0000" y="-35.0000" />
+
+                    <vertex x="-125.0000" y="44.0000" />
+
+                    <vertex x="-219.0000" y="28.0000" />
+
+                    <vertex x="-258.0000" y="14.0000" />
+
+                    <vertex x="-266.0000" y="-7.0000" />
+
+                </polygon>
+
+                <polygon numVertexes="7">
+
+                    <vertex x="-133.0000" y="-45.0000" />
+
+                    <vertex x="-27.0000" y="-50.0000" />
+
+                    <vertex x="114.0000" y="-44.0000" />
+
+                    <vertex x="141.0000" y="43.0000" />
+
+                    <vertex x="10.0000" y="50.0000" />
+
+                    <vertex x="-125.0000" y="44.0000" />
+
+                    <vertex x="-182.0000" y="-35.0000" />
+
+                </polygon>
+
+
+            </fixture>
+
+        </body>
+
+    </bodies>
+    <metadata>
+        <format>1</format>
+        <ptm_ratio></ptm_ratio>
+    </metadata>
+</bodydef>
