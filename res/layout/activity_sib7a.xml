@@ -7,12 +7,17 @@
     tools:context=".Sib7aActivity"
     tools:ignore="MergeRootFrame" >
 
-    <org.andengine.opengl.view.RenderSurfaceView
-        android:id="@+id/physicsWorldFrameContainer"
-        android:layout_width="fill_parent"
-        android:layout_height="420dp"
-        android:layout_gravity="top"
-        android:layout_margin="0dp" />
+    <FrameLayout android:id="@+id/phyics_world_frame"
+        android:layout_height="@dimen/sib7a_physics_container"
+        android:layout_width="fill_parent" 
+        android:layout_gravity="top">
+        <org.andengine.opengl.view.RenderSurfaceView
+            android:id="@+id/physicsWorldFrameContainer"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="top"
+            android:layout_margin="0dp" />
+    </FrameLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -32,8 +37,7 @@
             android:adjustViewBounds="true"
             android:spinnerMode="dropdown"
             android:textAlignment="center"
-            tools:listitem="@android:layout/simple_spinner_item" 
-            />
+            tools:listitem="@android:layout/simple_spinner_item" />
 
         <TextView
             android:id="@+id/startInstructionsText"
@@ -61,7 +65,7 @@
             android:layout_above="@+id/startInstructionsText"
             android:layout_centerHorizontal="true"
             android:onClick="onClickDefineSize"
-            android:text="@string/cusotme_count__define_button"
+            android:text="@string/custome_count_define_button"
             android:visibility="invisible" />
 
         <ImageButton
@@ -86,7 +90,6 @@
             android:text="بسم الله الرحمن الرحيم"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </RelativeLayout>
 
 </LinearLayout>

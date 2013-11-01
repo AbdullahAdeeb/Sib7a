@@ -53,7 +53,7 @@ import com.badlogic.gdx.physics.box2d.joints.PulleyJointDef;
  * @author Nicolas Gramlich
  * @since 18:47:08 - 19.03.2010
  */
-public class Sib7aPhysicsWorld2 extends SimpleLayoutGameActivity implements IAccelerationListener, IOnSceneTouchListener {
+public class Sib7aPhysicsWorldPortrait extends SimpleLayoutGameActivity implements IAccelerationListener, IOnSceneTouchListener {
 
 	// ===========================================================
 	// Constants
@@ -61,7 +61,7 @@ public class Sib7aPhysicsWorld2 extends SimpleLayoutGameActivity implements IAcc
 
 	protected int CAMERA_HEIGHT = 836;
 	protected int CAMERA_WIDTH = 720;
-	private static final String BEAD_PNG_NAME = "Bead1.png";
+	private static final String BEAD_NAME_PREFIX = "a";
 	private static final String BACKGROUND_ASSET_NAME = "black_abstract_background.png";
 	private static final String TOP_SHADE_BACKGROUND_PNG = "top_shade_background.png";
 	private static final String TOP_SHADE_SHADOW_PNG = "top_shade_shadow.png";
@@ -73,7 +73,7 @@ public class Sib7aPhysicsWorld2 extends SimpleLayoutGameActivity implements IAcc
 	private Scene mScene;
 	private BuildableBitmapTextureAtlas mBitmapTextureAtlas;
 	private ITextureRegion mBackgroundRegion;
-	private ITextureRegion mBeanTextureRegion;
+	private ArrayList<ITextureRegion> mBeanTextureRegions;
 	private ITextureRegion topShadeRegion;
 	protected PhysicsWorld mPhysicsWorld;
 
@@ -137,10 +137,10 @@ public class Sib7aPhysicsWorld2 extends SimpleLayoutGameActivity implements IAcc
 
 		this.mBitmapTextureAtlas = new BuildableBitmapTextureAtlas(mEngine.getTextureManager(), 2000, 2000,
 				BitmapTextureFormat.RGBA_8888, TextureOptions.BILINEAR);
-		this.mBeanTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mBitmapTextureAtlas, this,
-				BEAD_PNG_NAME);
+		
 		this.mBackgroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mBitmapTextureAtlas, this,
 				BACKGROUND_ASSET_NAME);
+		loadBeads();
 		this.topShadeRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mBitmapTextureAtlas, this,
 				TOP_SHADE_PNG);
 		this.topShadeShadowRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mBitmapTextureAtlas,
@@ -164,6 +164,14 @@ public class Sib7aPhysicsWorld2 extends SimpleLayoutGameActivity implements IAcc
 		this.internalPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 	}
 
+	void loadBeads(){
+		this.mBeanTextureRegions = new ArrayList<ITextureRegion>();
+		for (int i = 1; i <= 5; i++) {
+			this.mBeanTextureRegions.add(BitmapTextureAtlasTextureRegionFactory.createFromAsset(mBitmapTextureAtlas, this,
+					"Beads/"+BEAD_NAME_PREFIX+i+".png"));
+		}
+		
+	}
 	@Override
 	public Scene onCreateScene() {
 		this.mEngine.registerUpdateHandler(new FPSLogger());
@@ -196,6 +204,7 @@ public class Sib7aPhysicsWorld2 extends SimpleLayoutGameActivity implements IAcc
 		scaleToFillWidth(topShadeShadow);
 		scaleToFillWidth(topShadeBackground);
 
+		ITextureRegion mBeanTextureRegion = mBeanTextureRegions.get(0);
 		final Rectangle top = new Rectangle(0, topShade.getHeightScaled(), CAMERA_WIDTH, 0, vertexBufferObjectManager);
 		final Rectangle left = new Rectangle(0, 0, 0, CAMERA_HEIGHT * 2, vertexBufferObjectManager);
 		final Rectangle right = new Rectangle(CAMERA_WIDTH, 0, 0, CAMERA_HEIGHT * 2, vertexBufferObjectManager);
@@ -353,7 +362,7 @@ public class Sib7aPhysicsWorld2 extends SimpleLayoutGameActivity implements IAcc
 		float pFirstY = topShade.getHeightScaled();
 		this.beadSpritesArray = new ArrayList<Sprite>();
 
-		final Sprite bFirstSprite = new Sprite(pFirstX, pFirstY, this.mBeanTextureRegion,
+		final Sprite bFirstSprite = new Sprite(pFirstX, pFirstY, this.mBeanTextureRegions.get(0),
 				this.getVertexBufferObjectManager());
 		final Body bFirstBody = createBeadBody(bFirstSprite);
 		// bFirstBody.setTransform(pFirstX -
@@ -380,6 +389,7 @@ public class Sib7aPhysicsWorld2 extends SimpleLayoutGameActivity implements IAcc
 		float pNewY = bLastSprite.getY();
 		float pNewX = 0;
 		// create Beads bodies
+		int beadVer=1;
 		for (int i = 0; i < numberOfBeads - 1; i++) {
 			if (i < (numberOfBeads + 1) / 2) {
 				pNewY = pNewY + bLastSprite.getHeight();
@@ -395,7 +405,7 @@ public class Sib7aPhysicsWorld2 extends SimpleLayoutGameActivity implements IAcc
 				}
 			}
 
-			final Sprite bNewSprite = new Sprite(pNewX, pNewY, this.mBeanTextureRegion,
+			final Sprite bNewSprite = new Sprite(pNewX, pNewY, mBeanTextureRegions.get(beadVer),
 					mEngine.getVertexBufferObjectManager());
 			Body bNewBody = createBeadBody(bNewSprite);
 
@@ -407,6 +417,11 @@ public class Sib7aPhysicsWorld2 extends SimpleLayoutGameActivity implements IAcc
 			bLastBody = bNewBody;
 			bLastSprite = bNewSprite;
 
+			if (beadVer ==4) {
+				beadVer = 0;
+			}else{
+				beadVer++;
+			}
 		}
 		// attach beads to the scene
 		for (int i = 0; i < beadSpritesArray.size(); i++) {

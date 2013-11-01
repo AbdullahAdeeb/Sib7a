@@ -1,14 +1,10 @@
 package com.baramej.sib7a;
 
-import java.util.prefs.Preferences;
-
 import android.R.style;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Point;
+import android.os.Bundle;
 import android.view.Display;
 import android.view.Menu;
 import android.view.View;

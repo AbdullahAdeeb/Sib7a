@@ -19,7 +19,7 @@
             android:name="com.baramej.sib7a.Sib7aMain"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +28,9 @@
         </activity>
         <activity android:name="com.baramej.sib7a.SplashScreenActivity" />
         <activity android:name="com.baramej.sib7a.Sib7aPhysicsWorld" />
-        <activity android:name="com.baramej.sib7a.Sib7aPhysicsWorld2" />
+        <activity android:name="com.baramej.sib7a.Sib7aPhysicsWorldPortrait" />
+        
+        
         <!--
              <activity
             android:name="com.baramej.sib7a.Sib7aMain"
