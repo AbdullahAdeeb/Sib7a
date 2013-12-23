@@ -39,6 +39,6 @@
     <color name="red">#ff4800</color>
     <color name="purple">#d1b0ff</color>
 
-    <string name="cusotme_count__define_button">Define size</string>
+    <string name="custome_count_define_button">Define size</string>
 
 </resources>

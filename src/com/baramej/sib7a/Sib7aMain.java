@@ -2,38 +2,32 @@ package com.baramej.sib7a;
 
 import java.io.IOException;
 
-import javax.xml.transform.stream.StreamSource;
-
-import org.andengine.engine.options.SoundOptions;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
-import android.text.Layout;
+import android.view.Display;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Sib7aMain extends Sib7aPhysicsWorld2 implements OnItemSelectedListener {
+public class Sib7aMain extends Sib7aPhysicsWorldPortrait implements OnItemSelectedListener {
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -41,9 +35,10 @@ public class Sib7aMain extends Sib7aPhysicsWorld2 implements OnItemSelectedListe
 	 */
 	private Vibrator vibrator;
 	public SharedPreferences usrPref = null;
+	private SharedPreferences intPref;
 
-	static int sib7aIndex = 0;
-	int MaxCount = 33;
+	int sib7aIndex = 0;
+	int maxCount = 33;
 	int currentCount = 0;
 	long[] LONG_VIBE_PATTERN = { 0, 200, 50, 200 };
 	long[] SHORT_VIBE_PATTERN = { 0, 50, 50, 50 };
@@ -53,6 +48,8 @@ public class Sib7aMain extends Sib7aPhysicsWorld2 implements OnItemSelectedListe
 	int[] soundsIds = new int[3];
 	private TextView instructionsTxtView;
 	private TextView countTxtView;
+	private int SCREEN_WIDTH;
+	private int SCREEN_HEIGHT;
 
 	/*
 	 * SUPERCLASS OVERIDE (non-Javadoc)
@@ -71,9 +68,9 @@ public class Sib7aMain extends Sib7aPhysicsWorld2 implements OnItemSelectedListe
 		this.countTxtView = (TextView) findViewById(R.id.countTextView);
 		this.defineSizeButton = (Button) findViewById(R.id.define_size_button);
 
-//		usrPref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+		intPref = getSharedPreferences("internal_prefs", 0);
+
 		usrPref = PreferenceManager.getDefaultSharedPreferences(getApplication());
-//		usrPref.
 		vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 		loadSounds();
 
@@ -82,12 +79,14 @@ public class Sib7aMain extends Sib7aPhysicsWorld2 implements OnItemSelectedListe
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		Spinner spinner = (Spinner) findViewById(R.id.sib7a_spinner);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.counts_label_array,
 				android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
 		spinner.setOnItemSelectedListener(this);
+
 	}
 
 	@Override
@@ -96,25 +95,27 @@ public class Sib7aMain extends Sib7aPhysicsWorld2 implements OnItemSelectedListe
 		instructionsTxtView.setVisibility(View.VISIBLE);
 
 		if (arg2 == 0) {
-			this.MaxCount = 33;
+			this.maxCount = 33;
 			this.defineSizeButton.setVisibility(View.INVISIBLE);
 		} else if (arg2 == 1) {
-			this.MaxCount = 100;
+			this.maxCount = 100;
 			this.defineSizeButton.setVisibility(View.INVISIBLE);
 
 		} else if (arg2 == 2) {
-			// TODO get max count
-			// this.MaxCount =
-			// Integer.parseInt(usrPref.getString("userDefinedCount",
-			// "0"));
+			
+			maxCount = intPref.getInt("userDefinedCount", maxCount);
+			System.out.println("\t\t>>>>>>>>> " + maxCount);
+
 			this.defineSizeButton.setVisibility(View.VISIBLE);
 
 		}
 
-		if (currentCount >= MaxCount) {
-			incrementCount();
+		if (currentCount >= maxCount) {
+			incrementCount(); // to reset the current count and take
+					  // care of all the left overs
 		}
-		System.out.println(">>>>>>>>>" + this.MaxCount);
+
+		System.out.println("/t/t>>>>>>>>>" + this.maxCount);
 
 	}
 
@@ -136,10 +137,10 @@ public class Sib7aMain extends Sib7aPhysicsWorld2 implements OnItemSelectedListe
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == 24 || keyCode == 25) {
 			return true;
-		} 
-//		else if (keyCode == KeyEvent.KEYCODE_MENU) {
-//			return startSettingsDialog();
-//		}
+		}
+		// else if (keyCode == KeyEvent.KEYCODE_MENU) {
+		// return startSettingsDialog();
+		// }
 		return super.onKeyDown(keyCode, event);
 	}
 
@@ -151,51 +152,72 @@ public class Sib7aMain extends Sib7aPhysicsWorld2 implements OnItemSelectedListe
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
-		 getMenuInflater().inflate(R.menu.sib7a, menu);
+		getMenuInflater().inflate(R.menu.sib7a, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-	    switch (item.getItemId()) {
-	        case R.id.action_settings:
-	            this.startSettingsDialog();
-	            return true;
-	        case R.id.action_abouts:
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			this.startSettingsDialog();
+			return true;
+		case R.id.action_abouts:
 			Toast.makeText(getApplicationContext(), "Will be implemented soon !! :) ", Toast.LENGTH_SHORT).show();
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
-	
+
 	/*
 	 * ================================================================ //
 	 * METHODS
 	 */// ==============================================================
+	private void defineScreenSize() {
+		if (SCREEN_WIDTH == 0 || SCREEN_HEIGHT == 0) {
+			Display display = getWindowManager().getDefaultDisplay();
+			Point size = new Point();
+			display.getSize(size);
+			SCREEN_WIDTH = size.x;
+			SCREEN_HEIGHT = size.y;
+			System.out.println(SCREEN_WIDTH);
+			System.out.println(SCREEN_HEIGHT);
+		}
+	}
+
 	public void onClickDefineSize(View view) {
 		System.out.println("are we even here !!!! ");
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		View views = getLayoutInflater().inflate(R.layout.number_picker, null);
+
+		final SharedPreferences.Editor intPrefEditor = intPref.edit();
+		final NumberPicker picker = (NumberPicker) views.findViewById(R.id.np);
+
+		picker.setMinValue(1);
+		picker.setMaxValue(1000);
+		picker.setValue(maxCount);
 		builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
+				maxCount = picker.getValue();
+				intPrefEditor.putInt("userDefinedCount", picker.getValue());
+				intPrefEditor.commit();
 				return;
 			}
 		});
+
 		builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				return;
 			}
 		});
 
-		View views = getLayoutInflater().inflate(R.layout.number_picker, null);
 		builder.setView(views);
 
 		final AlertDialog dialog = builder.create();
-		NumberPicker picker = (NumberPicker) views.findViewById(R.id.np);
-		picker.setMinValue(0);
-		picker.setMaxValue(999);
+
 		dialog.show();
 		//
 
@@ -221,12 +243,12 @@ public class Sib7aMain extends Sib7aPhysicsWorld2 implements OnItemSelectedListe
 		// }).create().show();
 	}
 
-	public void onClickInfoButton(View v){
-		
+	public void onClickInfoButton(View v) {
+
 	}
-	
+
 	private void startSettingsDialog() {
-		Intent settingsDialongIntent  = new Intent(this, SettingsDialog.class);
+		Intent settingsDialongIntent = new Intent(this, SettingsDialog.class);
 		this.startActivity(settingsDialongIntent);
 	}
 
@@ -238,7 +260,7 @@ public class Sib7aMain extends Sib7aPhysicsWorld2 implements OnItemSelectedListe
 
 	protected void incrementCount() {
 
-		if (currentCount < MaxCount) {
+		if (currentCount < maxCount) {
 			currentCount++;
 			instructionsTxtView.setVisibility(View.INVISIBLE);
 			countTxtView.setText(Integer.toString(currentCount));
@@ -256,10 +278,10 @@ public class Sib7aMain extends Sib7aPhysicsWorld2 implements OnItemSelectedListe
 			return;
 		}
 		// first third and second third eg. 11 and 22 from 33
-		if (currentCount == MaxCount / 3 || currentCount == (MaxCount / 3) * 2) {
+		if (currentCount == maxCount / 3 || currentCount == (maxCount / 3) * 2) {
 			vibrator.vibrate(SHORT_VIBE_PATTERN, -1);
 			// the end of the tasbee7
-		} else if (currentCount == MaxCount) {
+		} else if (currentCount == maxCount) {
 			vibrator.vibrate(LONG_VIBE_PATTERN, -1);
 		} else {
 			// normal tasbee7

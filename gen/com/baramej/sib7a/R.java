@@ -48,11 +48,11 @@ public final class R {
         public static final int countTextView=0x7f0b0009;
         public static final int define_size_button=0x7f0b000a;
         public static final int imageButton1=0x7f0b0007;
-        public static final int imageView1=0x7f0b0003;
         public static final int np=0x7f0b000d;
+        public static final int phyics_world_frame=0x7f0b0004;
         public static final int physicsWorldFrameContainer=0x7f0b0005;
         public static final int prefsContainerFrame=0x7f0b0002;
-        public static final int sib7a_container=0x7f0b0004;
+        public static final int sib7a_container=0x7f0b0003;
         public static final int sib7a_spinner=0x7f0b0006;
         public static final int startInstructionsText=0x7f0b0008;
         public static final int textView1=0x7f0b000b;
@@ -77,7 +77,7 @@ public final class R {
         public static final int action_settings=0x7f060003;
         public static final int app_name=0x7f060000;
         public static final int com_name=0x7f060001;
-        public static final int cusotme_count__define_button=0x7f060016;
+        public static final int custome_count_define_button=0x7f060016;
         public static final int dialog_cancel=0x7f060013;
         /**   
          */
