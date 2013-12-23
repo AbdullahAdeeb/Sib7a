@@ -7,12 +7,15 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.webkit.WebView;
 
-@SuppressLint("NewApi") public class SplashScreenActivity extends Activity {
+@SuppressLint("NewApi") public class SplashScreenActivity extends Activity  implements OnTouchListener{
 
-	private static final long SPLASH_DURATION = 4000;
+	private static final long SPLASH_DURATION = 1000 * 4;
 	// time
 	private boolean mIsBackButtonPressed;
 
@@ -20,17 +23,17 @@ import android.webkit.WebView;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setTheme(style.Theme_Black_NoTitleBar_Fullscreen);
-//		this.setTitle(R.string.title_activity_splash_screen);
 		setContentView(R.layout.activity_splash_screen);
 		
-//		View splash = (View)inflater.inflate(R.layout.abc, null);
-//		splash.setBackgroundColor(R.color.black);
-//		
+
 		WebView webView = (WebView) findViewById(R.id.webView1);
 		webView.setBackgroundColor(Color.BLACK);
 		webView.getSettings().setJavaScriptEnabled(true);
 		webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
 		webView.loadUrl("file:///android_asset/splashScreenOne/splashScreenOne.html");
+		webView.setClickable(true);
+//		webView.setOnClickListener(this);
+		webView.setOnTouchListener(this);
 		
 		Handler handler = new Handler();
 
@@ -71,8 +74,17 @@ import android.webkit.WebView;
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		// disable options menu while on splash screen
+		
 		// Inflate the menu; this adds items to the action bar if it is present.
 //		getMenuInflater().inflate(R.menu.splash_screen, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+		System.out.println("user click on splash detected");
+		finish();
 		return true;
 	}
 

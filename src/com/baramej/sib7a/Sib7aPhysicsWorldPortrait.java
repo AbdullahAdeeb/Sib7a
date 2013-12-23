@@ -283,9 +283,9 @@ public class Sib7aPhysicsWorldPortrait extends SimpleLayoutGameActivity implemen
 				}
 
 				/*
-				 * to change the bottom alpha boundry, change
+				 * to change the bottom alpha boundary, change
 				 * the constant at the end to change the upper
-				 * boundry, change the first constant
+				 * Boundary, change the first constant
 				 */
 				float alpha = (getCoverRoofPosition() - (CAMERA_HEIGHT * 0.7f)) / (CAMERA_HEIGHT * 0.3f);
 				if (alpha < 0)
@@ -299,9 +299,10 @@ public class Sib7aPhysicsWorldPortrait extends SimpleLayoutGameActivity implemen
 		return this.mScene;
 	}
 
+	// this listener gets invoked when the main scene is touched which includes the beads as well
 	@Override
 	public boolean onSceneTouchEvent(final Scene pScene, final TouchEvent pSceneTouchEvent) {
-		// System.out.println(">>>> mScene touch detected");
+//		 System.out.println(">>>> mScene touch detected");
 		isMainTouched = true;
 		if (this.beadSpritesArray.size() > 0) {
 			Body beadBody;
@@ -453,6 +454,7 @@ public class Sib7aPhysicsWorldPortrait extends SimpleLayoutGameActivity implemen
 	}
 
 	private Body createBeadBody(Sprite beadSpriteX) {
+		// this shall create a vertex body
 		// final PhysicsEditorLoader mPhysicsLoader = new
 		// PhysicsEditorLoader();
 		// try {
@@ -493,11 +495,6 @@ public class Sib7aPhysicsWorldPortrait extends SimpleLayoutGameActivity implemen
 	}
 
 	public float getCoverRoofPosition() {
-		// Body mRoofBody =
-		// mPhysicsWorld.getPhysicsConnectorManager().findBodyByShape(this.mRoof);
-		// return
-		// mRoofBody.getPosition().y*PhysicsConstants.PIXEL_TO_METER_RATIO_DEFAULT;
-
 		return this.mRoof.getY();
 	}
 
