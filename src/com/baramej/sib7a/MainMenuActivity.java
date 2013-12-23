@@ -14,14 +14,18 @@ public class MainMenuActivity extends Activity {
 	// TODO set to zero to get actual sizes
 	public static int SCREEN_WIDTH = 0;
 	public static int SCREEN_HEIGHT = 0;
+	
+	private boolean isSplashStarted = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		System.out.println((int)((-5)/(-5)));
 		defineScreenSize();
-		// start splash screen
 		setContentView(R.layout.activity_main_menu);
+
+		// start splash screen
+		isSplashStarted = true;
 		this.startActivity(new Intent(MainMenuActivity.this, SplashScreenActivity.class));
 		System.err.println("splash is done");
 		setTheme(style.Theme_Holo);
@@ -50,6 +54,7 @@ public class MainMenuActivity extends Activity {
 	}
 
 	public void onClick_startSib7a() {
+		System.out.println("starting sib7a");
 		Intent intent = new Intent(MainMenuActivity.this, Sib7aMain.class);
 		this.startActivity(intent);
 
